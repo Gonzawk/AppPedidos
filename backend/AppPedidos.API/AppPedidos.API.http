@@ -1,0 +1,6 @@
+@AppPedidos.API_HostAddress = http://localhost:5030
+
+GET {{AppPedidos.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
