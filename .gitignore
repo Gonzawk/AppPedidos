@@ -32,5 +32,3 @@ backend/AppPedidos.API/Migrations/
 *.env
 *.env.local
 
-# SQL 
-*.sql
