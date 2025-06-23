@@ -25,6 +25,8 @@ import InsumosPage from "./pages/local/InsumosPage";
 import ProduccionPage from "./pages/local/ProduccionPage";
 import ProveedoresPage from "./pages/local/ProveedoresPage";
 import ComprasPage from "./pages/local/ComprasPage";
+import LocalDetalle from "./pages/cliente/LocalDetalle";
+import CajaPage from "./pages/local/CajaPage";
 
 export default function App() {
   return (
@@ -70,6 +72,7 @@ export default function App() {
   <Route path="/local/produccion" element={<ProduccionPage/>} />
   <Route path="/local/proveedores" element={<ProveedoresPage/>} />
   <Route path="/local/compras" element={<ComprasPage/>} />
+  <Route path="/local/caja" element={<CajaPage/>} />
 </Route>
 
 
@@ -84,7 +87,7 @@ export default function App() {
           <Route path="/inicio" element={<InicioCliente />} />
           <Route path="/pedidos" element={<PedidosCliente />} />
           <Route path="/perfil" element={<PerfilCliente />} />
-
+          <Route path="/local/:slug" element={<LocalDetalle />} />
         </Route>
       </Routes>
     </BrowserRouter>

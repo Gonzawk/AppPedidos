@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../../api/axiosInstance";
 
 type Local = {
-  id: number;
+  localId: number;
   nombre: string;
-  descripcion: string;
-  imagenUrl?: string;
-  tiempoEntrega: number;
+  logoUrl: string;
+  slug: string; // <-- Agregamos el slug
 };
 
 type Categoria = {
@@ -29,30 +29,16 @@ export default function InicioCliente() {
   const [locales, setLocales] = useState<Local[]>([]);
 
   useEffect(() => {
-    // Datos estáticos de ejemplo
-    setLocales([
-      {
-        id: 1,
-        nombre: "Burger Town",
-        descripcion: "Las mejores hamburguesas de la ciudad.",
-        imagenUrl: "/assets/locales/burger-town.jpg",
-        tiempoEntrega: 25,
-      },
-      {
-        id: 2,
-        nombre: "Pizzería Napoli",
-        descripcion: "Auténtica pizza italiana.",
-        imagenUrl: "/assets/locales/napoli.jpg",
-        tiempoEntrega: 30,
-      },
-      {
-        id: 3,
-        nombre: "Sushi Express",
-        descripcion: "Sushi fresco y delicioso.",
-        imagenUrl: "/assets/locales/sushi-express.jpg",
-        tiempoEntrega: 20,
-      },
-    ]);
+    const fetchLocales = async () => {
+      try {
+        const response = await axios.get("/public/catalogo");
+        setLocales(response.data);
+      } catch (error) {
+        console.error("Error al obtener el catálogo:", error);
+      }
+    };
+
+    fetchLocales();
   }, []);
 
   return (
@@ -89,19 +75,21 @@ export default function InicioCliente() {
 
       {/* Locales */}
       <div>
-        <h2 className="text-lg font-semibold mb-2">Locales cerca tuyo</h2>
+        <h2 className="text-lg font-semibold mb-2">Locales disponibles</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {locales.map((local) => (
-            <div key={local.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div
+              key={local.localId}
+              className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+              onClick={() => navigate(`/local/${local.slug}`)} // <-- navegación dinámica por slug
+            >
               <img
-                src={local.imagenUrl || "/default-local.jpg"}
+                src={local.logoUrl || "/default-local.jpg"}
                 alt={local.nombre}
                 className="w-full h-32 object-cover"
               />
               <div className="p-4">
                 <h3 className="text-md font-semibold">{local.nombre}</h3>
-                <p className="text-sm text-gray-600">{local.descripcion}</p>
-                <p className="text-sm text-gray-500 mt-2">Tiempo estimado: {local.tiempoEntrega} min</p>
               </div>
             </div>
           ))}

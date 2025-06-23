@@ -31,6 +31,19 @@ namespace AppPedidos.API.Data
         public DbSet<Compra> Compras { get; set; }
         public DbSet<CompraDetalle> CompraDetalles { get; set; }
 
+        public DbSet<Venta> Ventas { get; set; }
+        public DbSet<VentaDetalle> VentaDetalles { get; set; }
+
+        public DbSet<GastoFijo> GastosFijos { get; set; }
+        public DbSet<GastoVariable> GastosVariables { get; set; }
+
+        public DbSet<CajaDiaria> CajasDiarias { get; set; }
+
+        public DbSet<CuponDescuento> CuponesDescuento { get; set; }
+
+        public DbSet<CostoProduccionProducto> CostosProduccionProducto { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>().HasQueryFilter(u => u.Activo);
@@ -180,7 +193,7 @@ namespace AppPedidos.API.Data
                 .Property(d => d.PrecioUnitario)
                 .HasPrecision(10, 2);
 
-            modelBuilder.Entity<CompraDetalle>()
+           modelBuilder.Entity<CompraDetalle>()
                 .HasOne(cd => cd.Compra)
                 .WithMany(c => c.Detalles)
                 .HasForeignKey(cd => cd.CompraId);
@@ -195,6 +208,47 @@ namespace AppPedidos.API.Data
                 new Rol { Id = 2, Nombre = "local", Activo = true },
                 new Rol { Id = 3, Nombre = "cliente", Activo = true }
             );
+
+
+            modelBuilder.Entity<Venta>()
+        .HasOne(v => v.Local)
+        .WithMany()
+        .HasForeignKey(v => v.LocalId);
+
+    modelBuilder.Entity<VentaDetalle>()
+        .HasOne(d => d.Producto)
+        .WithMany()
+        .HasForeignKey(d => d.ProductoId);
+
+    modelBuilder.Entity<VentaDetalle>()
+        .HasOne(d => d.Venta)
+        .WithMany(v => v.Detalles)
+        .HasForeignKey(d => d.VentaId);
+
+    modelBuilder.Entity<GastoFijo>()
+        .HasOne(g => g.Local)
+        .WithMany()
+        .HasForeignKey(g => g.LocalId);
+
+    modelBuilder.Entity<GastoVariable>()
+        .HasOne(g => g.Local)
+        .WithMany()
+        .HasForeignKey(g => g.LocalId);
+
+    modelBuilder.Entity<CajaDiaria>()
+        .HasOne(c => c.Local)
+        .WithMany()
+        .HasForeignKey(c => c.LocalId);
+
+    modelBuilder.Entity<CuponDescuento>()
+        .HasOne(c => c.Local)
+        .WithMany()
+        .HasForeignKey(c => c.LocalId);
+
+    modelBuilder.Entity<CostoProduccionProducto>()
+        .HasOne(c => c.Produccion)
+        .WithMany()
+        .HasForeignKey(c => c.ProduccionId);
         }
     }
 }

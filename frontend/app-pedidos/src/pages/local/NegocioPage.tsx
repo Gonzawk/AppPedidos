@@ -80,7 +80,7 @@ export default function NegociosPage() {
            </button>
            
           <button
-            onClick={() => navigate("/local/finanzas")}
+            onClick={() => navigate("/local/caja")}
             className="bg-yellow-600 text-white p-4 rounded-xl shadow hover:bg-yellow-700 transition font-medium"
           >
             💰 Caja / Finanzas

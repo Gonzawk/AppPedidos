@@ -44,6 +44,7 @@ public class ProductoController : ControllerBase
                 Descripcion = p.Descripcion,
                 Precio = p.Precio,
                 ImagenUrl = p.ImagenUrl,
+                Stock = p.Stock, // <-- nuevo campo
                 Activo = p.Activo,
                 Modificadores = p.ProductoModificadores.Select(pm => new ModificadorDto
                 {
@@ -56,6 +57,7 @@ public class ProductoController : ControllerBase
 
         return Ok(productos);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<ProductoDto>> Crear([FromBody] ProductoDto dto)

@@ -8,7 +8,9 @@ public class ProductoDto
     public string Descripcion { get; set; }
     public decimal Precio { get; set; }
     public string ImagenUrl { get; set; }
+    public int Stock { get; set; } // <-- agregado
     public bool Activo { get; set; }
 
     public List<ModificadorDto> Modificadores { get; set; } = new();
 }
+

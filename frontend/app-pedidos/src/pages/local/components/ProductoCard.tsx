@@ -8,6 +8,12 @@ export default function ProductoCard({ producto }: { producto: any }) {
         <h3 className="text-lg font-semibold text-gray-800">{producto.nombre}</h3>
         <p className="text-gray-500 text-sm">{producto.descripcion}</p>
         <p className="text-green-700 font-medium mt-1">${producto.precio.toFixed(2)}</p>
+
+        {/* Stock actual */}
+        <p className="text-sm text-blue-600 font-medium">
+          Stock: {producto.stock}
+        </p>
+
         <span
           className={`inline-block text-sm font-medium ${
             producto.activo ? "text-green-600" : "text-red-500"
