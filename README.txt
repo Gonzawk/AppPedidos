@@ -114,3 +114,8 @@
 git clone https://github.com/Gonzawk/TuPedido.git
 cd TuPedido
 
+💼 **Portafolio:** [Portafoliowebgonzalopaz.com](https://portafoliowebgonzalopaz.netlify.app)  
+📧 **Correo Electrónico:** [Gonzalopaz@gmail.com](mailto:gdp43191989@gmail.com)  
+🌐 **LinkedIn:** [linkedin.com/in/gonzalodpaz](https://linkedin.com/in/gonzalodpaz/)  
+🐦 **Twitter:** [@GonzaPaz]([https://x.com/Gonza77])  
+📂 **GitHub:** [github.com/Gonzawk](https://github.com/Gonzawk)  
