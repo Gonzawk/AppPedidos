@@ -1,105 +1,116 @@
-# 🛍️ TuPedido - Plataforma de Gestión Gastronómica
+# 🛒 TuPedido
 
-**TuPedido** es un sistema completo de autogestión para locales gastronómicos. Permite a comercios crear su cuenta, configurar su local, gestionar el menú, pedidos, caja, insumos, producción, finanzas, y más. Pensado para pequeñas y medianas empresas gastronómicas que buscan optimizar sus procesos sin depender de plataformas externas.
-
----
-
-## 🚀 Características Principales
-
-- ✅ Registro de locales autogestionado  
-- ✅ Gestión de menú, productos, stock e insumos  
-- ✅ Administración de horarios y atención  
-- ✅ Control de pedidos en tiempo real  
-- ✅ Módulo de compras y proveedores  
-- ✅ Producción a partir de insumos  
-- ✅ Caja diaria, egresos y reportes financieros  
-- ✅ Asignación de repartidores  
-- ✅ Cupones de descuento personalizados  
-- ✅ Cliente con seguimiento de pedidos  
-- ✅ Panel de administración por roles  
+**TuPedido** es una aplicación integral que fusiona la experiencia de usuario de apps tipo *PedidosYa* o *Rappi* con herramientas de gestión para comercios locales. Desde la carga de productos, control de stock y producción, hasta la administración de repartidores, horarios, cupones y cierre de caja. Todo en una plataforma escalable, moderna y lista para producción.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🚀 Tecnologías Utilizadas
 
-### Frontend
-- React + Vite + TypeScript
-- React Router DOM v6
-- Tailwind CSS
-- Axios con interceptor JWT
-- Framer Motion
-- Google OAuth (`@react-oauth/google`)
+### 📊 Base de Datos
+- ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat&logo=microsoft-sql-server&logoColor=white)  
+  **SQL Server**: Base de datos relacional con estructuras normalizadas y relaciones bien definidas.
 
-### Backend
-- ASP.NET Core 8
-- Entity Framework Core + SQL Server
-- JWT + OAuth2 (login propio + Google)
-- Claims personalizados + Soft Delete + DTOs
+### 🖥️ Backend
+- ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=flat&logo=dotnet&logoColor=white)  
+  **Framework**: ASP.NET Core 7 en C#, siguiendo buenas prácticas de arquitectura limpia.
+- **Estructura del Proyecto**:
+  - **Controladores**: Endpoints RESTful organizados por entidad.
+  - **DTOs**: Separación de lógica de negocio y presentación.
+  - **Servicios**: Lógica central desacoplada del acceso a datos.
+  - **EF Core + FluentAPI**: Mapeo de entidades y migraciones automáticas.
+- **Seguridad y Autenticación**:
+  - ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=json-web-tokens&logoColor=white)  
+    Autenticación con JWT y control de acceso por roles (`admin`, `vendedor`, `repartidor`).
+  - ![BCrypt](https://img.shields.io/badge/BCrypt-228B22?style=flat&logo=lock&logoColor=white)  
+    Hash de contraseñas seguro.
 
----
-
-## 📂 Estructura de Carpetas (Frontend)
-
-```plaintext
-src/
-├── api/                  # Axios con configuración global
-├── auth/                 # Login, AuthProvider, SessionGuard
-├── components/           # UI generales (modales, loaders, botones)
-├── layouts/              # Layouts para local, cliente, admin
-├── pages/
-│   ├── cliente/          # Rutas privadas para el cliente
-│   ├── local/            # Rutas privadas para el local
-│   ├── public/           # Landing y registro público
-│   └── Home.tsx          # RoleRedirector
-├── App.tsx               # Definición de rutas
-└── main.tsx              # Entrada principal
-```
+### 🌐 Frontend
+- ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)  
+  **Framework**: React + Vite + TypeScript.
+- **UI**:  
+  - TailwindCSS.
+  - Shadcn UI.
+  - Iconografía Lucide.
+  - React Router DOM para navegación con rutas protegidas.
+  - Axios para conexión a API REST.
+  - React Joyride para instructivos interactivos.
 
 ---
 
-## 🧪 Instalación y Ejecución
+## 🧩 Módulos del Sistema
 
+### 🏪 Información del Local
+- Datos del negocio, horarios de apertura/cierre, logo, y ubicación GPS.
+- Visibilidad automática del negocio según horario.
+
+### 🍽 Productos / Menú
+- Carga de productos con unidad (por unidad, kg, 100gr, etc.).
+- Precio dinámico según producción y consumo de insumos.
+- Gestión de stock automático según producción.
+- Visibilidad automática de productos con stock.
+
+### 🧾 Proveedores / Compras
+- Alta, edición y eliminación de proveedores.
+- Registro de compras de insumos, con fecha, proveedor, cantidad y precio unitario.
+
+### 🏭 Producción / Insumos
+- Gestión de insumos (harina, grasa, etc.).
+- Registro diario de producción: insumo utilizado, cantidad producida, cálculo automático de costo unitario.
+- Stock actualizado en tiempo real.
+
+### 💰 Caja / Finanzas
+- Apertura y cierre de caja (3 turnos por día).
+- Registro de ventas, gastos, ingresos adicionales.
+- Cálculo de utilidad diaria.
+- Módulo de estadísticas de rentabilidad por producto, ventas y gastos.
+
+### 🚴‍♂️ Repartidores
+- Alta de repartidores con ubicación y credenciales.
+- Asignación automática de pedidos según zona.
+
+### 🎟️ Cupones de Descuento
+- Generación de cupones por local.
+- Lógica de uso: por porcentaje o monto fijo.
+- Control de usos disponibles y validez por fecha.
+
+---
+
+## 📱 Funcionalidades para el Cliente
+
+- Registro/login.
+- Ver negocios disponibles según horario.
+- Ver productos por categoría.
+- Agregar al carrito.
+- Aplicar cupones.
+- Realizar pedido.
+- Ver estado del pedido en tiempo real.
+- Recibir notificaciones.
+
+---
+
+## 🔐 Seguridad
+
+- Acceso con roles (Admin, Vendedor, Repartidor, Cliente).
+- Rutas protegidas.
+- JWT para autenticación.
+- Cifrado de contraseñas con BCrypt.
+- Protección de endpoints sensibles.
+
+---
+
+## 📖 Instalación y Configuración
+
+**Requisitos Previos:**
+- .NET 7 SDK.
+- SQL Server.
+- Node.js + npm.
+- Vite.
+- Visual Studio y/o VSCode.
+
+### 🧪 Instrucciones
+
+1. Clonar repositorio:
 ```bash
-git clone https://github.com/tuusuario/tu-pedido.git
-cd tu-pedido
-npm install
-npm run dev
-```
+git clone https://github.com/Gonzawk/TuPedido.git
+cd TuPedido
 
-Accedé desde `http://localhost:5173/`
-
----
-
-## 🔐 Accesos según Rol
-
-- **Cliente**: `/inicio`  
-- **Local**: `/local/dashboard`  
-- **Admin**: `/admin` (próximamente)  
-
----
-
-## 📡 API RESTful
-
-- Backend con ASP.NET Core 8
-- Protegido con JWT (claim: `role`)
-- Token requerido vía `Authorization: Bearer <token>`
-- Login expone `token` y `rol` en respuesta
-
----
-
-## 📜 Licencia
-
-MIT © [TuPedido](https://github.com/tuusuario/tu-pedido)
-
----
-
-## 🙋 Contribuciones
-
-¡Tus ideas y mejoras son bienvenidas!  
-Abrí un issue o PR si querés colaborar con el desarrollo.
-
----
-
-## 🌐 Demo
-
-> Agregá aquí el enlace si está desplegado online.
