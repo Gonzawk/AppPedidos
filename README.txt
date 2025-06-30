@@ -114,8 +114,76 @@
 git clone https://github.com/Gonzawk/TuPedido.git
 cd TuPedido
 
+- 2.Cambia al directorio del proyecto. 
+```bash
+cd TuPedido
+```
+
+ 
+- 3.Crear base de datos en SQL Server (usar el script TuPedidoDB.sql).
+
+
+- 4.Abrir la solucion del proyecto API en **Visual Studio** (`AppPedidos.API.sln`).
+
+
+- 5.Modificar en este el archivo `appsettings.json` para configurar la cadena de conexión con tu base de datos MySQL. Ejemplo:
+```json
+{
+  "ConnectionStrings": {
+     "DefaultConnection": "Servidor=localhost;Base de datos=PedidosAppDB;Id de usuario=<usuario>;Contraseña=<contraseña>;" 
+    }
+}
+```
+
+
+- 6.Restaura las dependencias de la API ejecutando el siguiente comando en la consola del administrador de paquetes de Visual Studio.
+```bash
+dotnet restore
+```
+
+
+- 7.Ejecuta la API (presiona **F5** o selecciona la opcion **Iniciar sin depuración** para ejecutar el servidor.
+
+
+- 8.Abra la carpeta del proyecto de la aplicacion web en **Visual Studio Code**.
+
+
+- 9.Instala las dependencias de npm necesarias ejecutando:
+```bash
+npm install 
+```
+
+
+- 10.En este punto solo queda verificar que el frontend tenga configurada correctamente la URL de la API (http://localhost:5173/api/).
+
+
+**Contribuir**
+
+1.Realiza un fork del repositorio. 
+
+2.Crea una nueva rama para tus cambios: 
+```bash 
+git checkout -b feature/nueva-funcionalidad
+```
+
+3.Realiza tus cambios y subelos a tu repositorio fork.
+
+4.Envia un pull request para revision.
+
+---
+---
+
+## 📌 Autor
+
+**👨‍💻 [Gonzalo Daniel Paz]**  _@GonzaDev_
+_Full Stack Developer |_  
+
 💼 **Portafolio:** [Portafoliowebgonzalopaz.com](https://portafoliowebgonzalopaz.netlify.app)  
 📧 **Correo Electrónico:** [Gonzalopaz@gmail.com](mailto:gdp43191989@gmail.com)  
 🌐 **LinkedIn:** [linkedin.com/in/gonzalodpaz](https://linkedin.com/in/gonzalodpaz/)  
 🐦 **Twitter:** [@GonzaPaz]([https://x.com/Gonza77])  
 📂 **GitHub:** [github.com/Gonzawk](https://github.com/Gonzawk)  
+
+---
+
+> "El desarrollo es más que código" 🚀
